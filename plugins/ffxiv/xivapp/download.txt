@@ -1,0 +1,14 @@
+#Download all the latest api information for offline use
+#wget -i download.txt
+
+http://xivapp.com/api/actions
+http://xivapp.com/api/statuses
+http://xivapp.com/api/supported
+http://xivapp.com/api/zones
+
+http://xivapp.com/api/enums?patchVersion=latest&platform=x86
+http://xivapp.com/api/enums?patchVersion=latest&platform=x64
+http://xivapp.com/api/signatures?patchVersion=latest&platform=x86
+http://xivapp.com/api/signatures?patchVersion=latest&platform=x64
+http://xivapp.com/api/structures?patchVersion=latest&platform=x86
+http://xivapp.com/api/structures?patchVersion=latest&platform=x64

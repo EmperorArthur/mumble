@@ -1,0 +1,49 @@
+Acording to Reader.Actor.cs
+    Each ActorEntity is 0x23F0 (9200) bytes long
+
+
+ActorEntityHelper shows this is how we use the offset information:
+    entry.X = BitConverter.ToSingle(source, MemoryHandler.Instance.Structures.ActorEntity.X + defaultBaseOffset);
+    entry.Z = BitConverter.ToSingle(source, MemoryHandler.Instance.Structures.ActorEntity.Z + defaultBaseOffset);
+    entry.Y = BitConverter.ToSingle(source, MemoryHandler.Instance.Structures.ActorEntity.Y + defaultBaseOffset);
+
+Scanner.cs:
+    FindExtendedSignatures fines where things are in memory
+
+Table with offset information (It's more reader friendly than the json below):
+    http://dev.windower.net/doku.php?id=ffxiv:structures:start
+Json API for offset information:
+    http://xivapp.com/api/structures?patchVersion=latest&platform=x86
+
+Camera Offsets (x86):
+    X?:             64
+    first_person:   256     (0 is in first person, 1 is free camera)
+    Zoom:           264
+    Heading:        288     (is oposite of char heading, unless in first person mode)
+	elevation		292?		(-pi to pi)
+    X?:             400
+
+Camera Offsets (x64):
+    X?              80
+    first_person    272     (0 is in first person, 1 is free camera)
+    Zoom:           280
+    Heading:        304     (-pi to pi, is oposite of char heading, unless in first person mode)
+	elevation		308		(-pi to pi)
+    X?:             416
+
+
+Calculated Offsets (x64):
+    name:       48          (68 characters)
+    id?:        116         (should be 0x6BD46310)
+    x:          176
+    z:          180
+    y:          184
+   ?elevation?:	188			(-pi to pi, 0 while standing)
+    heading:    192			(-pi to pi)
+   ?elevation?:	376			(-pi to pi, 0 while standing)
+    current_hp: 5344
+    max_hp :    5348
+    mp&tp:      same as x86
+
+http://wiki.mumble.info/wiki/Pluginguide#Out_of_tree_build_.28doesn.27t_need_a_Mumble_build_environment.29
+
